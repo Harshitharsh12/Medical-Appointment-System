@@ -1,10 +1,25 @@
 import React from "react";
 import "../styles/RegisterStyles.css";
 import { Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
-  const onfinishHandler = (values) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const onfinishHandler = async (values) => {
+    try {
+      const res = await axios.post("/api/v1/user/register", values);
+      if (res?.data?.success) {
+        toast.success(res.data.message);
+        navigate("/login");
+      } else {
+        console.log(res.data.message);
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something Went Wrong!!");
+    }
   };
   return (
     <>

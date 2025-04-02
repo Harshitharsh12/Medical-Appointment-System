@@ -1,10 +1,26 @@
 import React from "react";
 import "../styles/RegisterStyles.css";
 import { Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 const Login = () => {
-  const onfinishHandler = (values) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const onfinishHandler = async (values) => {
+    try {
+      const res = await axios.post("/api/v1/user/login", values);
+      if (res?.data?.success) {
+        localStorage.setItem("token", res.data.token);
+        toast.success(res.data.message);
+        navigate("/");
+      } else {
+        console.log(res.data.message);
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      console.log("error");
+      toast.error("Error In Login!!");
+    }
   };
   return (
     <>
