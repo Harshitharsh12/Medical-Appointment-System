@@ -5,7 +5,9 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-import path from "node:path";
+import path from "path";
+import { fileURLToPath } from "url";
+
 // dotenv config
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use(morgan("dev"));
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/admin", adminRoutes);
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 
