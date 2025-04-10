@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 // dotenv config
 dotenv.config();
@@ -21,6 +22,8 @@ app.use(morgan("dev"));
 
 // routes:
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/admin", adminRoutes);
+
 const port = process.env.PORT || 8080;
 const mode = process.env.DEV_MODE;
 // loisten port

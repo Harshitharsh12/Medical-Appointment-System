@@ -24,6 +24,7 @@
     "mongoose": "^8.13.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.9",
-    "react-hot-toast": "^2.5.2"
+    "react-hot-toast": "^2.5.2",
+    "react-spinners": "^0.15.0"
   }
 }

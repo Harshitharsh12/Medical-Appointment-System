@@ -4,11 +4,16 @@ import { Form, Input } from "antd";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showLoading, hideLoading } from "../features/alertSlice";
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onfinishHandler = async (values) => {
     try {
+      dispatch(showLoading());
       const res = await axios.post("/api/v1/user/register", values);
+      dispatch(hideLoading());
       if (res?.data?.success) {
         toast.success(res.data.message);
         navigate("/login");
@@ -17,6 +22,7 @@ const Register = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.log(error);
       toast.error("Something Went Wrong!!");
     }
@@ -38,6 +44,9 @@ const Register = () => {
           </Form.Item>
           <Form.Item label="Password" name="password">
             <Input type="password" required />
+          </Form.Item>
+          <Form.Item label="Favourite-Game" name="game">
+            <Input type="text" required />
           </Form.Item>
           <Link to="/login" className="ms-2 mb-2  ">
             Already User Login Here
