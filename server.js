@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-
+import path from "node:path";
 // dotenv config
 dotenv.config();
 
@@ -23,6 +23,13 @@ app.use(morgan("dev"));
 // routes:
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/admin", adminRoutes);
+
+// static files
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 const port = process.env.PORT || 8080;
 const mode = process.env.DEV_MODE;

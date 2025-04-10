@@ -37,12 +37,10 @@ const BookingPage = () => {
       if (res?.data?.success) {
         toast.success(res?.data?.message);
       } else {
-        console.log(res?.data?.message);
         toast.error(res?.data?.message);
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
       toast.error(error);
     }
   };
@@ -60,11 +58,9 @@ const BookingPage = () => {
       if (res?.data?.success) {
         setDoctor(res?.data?.data);
       } else {
-        console.log(res?.data?.message);
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };

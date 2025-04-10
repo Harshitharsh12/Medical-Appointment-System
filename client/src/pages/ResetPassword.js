@@ -15,7 +15,6 @@ const ResetPassword = () => {
 
       const res = await axios.post("/api/v1/user/resetPassword", values);
       if (!res?.data?.success) {
-        console.log(res.data.message);
         toast.error(res.data.message);
       } else {
         dispatch(hideLoading());
@@ -24,7 +23,6 @@ const ResetPassword = () => {
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log("error");
       toast.error("Error In Login!!");
     }
   };

@@ -12,7 +12,6 @@ const Login = () => {
     try {
       const res = await axios.post("/api/v1/user/login", values);
       if (!res?.data?.success) {
-        console.log(res.data.message);
         toast.error(res.data.message);
       } else {
         dispatch(showLoading());
@@ -26,7 +25,6 @@ const Login = () => {
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log("error");
       toast.error("Error In Login!!");
     }
   };

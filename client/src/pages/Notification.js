@@ -24,12 +24,10 @@ const Notification = () => {
         toast.success(res?.data?.message);
         navigate("/");
       } else {
-        console.log("Error In getting Notification!!");
         toast.error("Error In getting Notification!!");
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
       toast.error(error);
     }
   };
@@ -48,11 +46,9 @@ const Notification = () => {
         toast.success(res?.data?.message);
         navigate("/");
       } else {
-        console.log("Error In deleting Notification!!");
         toast.error("Error In deleting Notification!!");
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };

@@ -21,7 +21,6 @@ const Doctors = () => {
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error("Error In Getting Doctors Data!!");
     }
   };
@@ -42,7 +41,6 @@ const Doctors = () => {
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };

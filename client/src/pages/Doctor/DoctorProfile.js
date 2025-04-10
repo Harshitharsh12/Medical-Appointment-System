@@ -23,10 +23,8 @@ const DoctorProfile = () => {
         setData(res?.data?.data);
       } else {
         toast.error(res?.data?.message);
-        console.log(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };
@@ -52,7 +50,6 @@ const DoctorProfile = () => {
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };

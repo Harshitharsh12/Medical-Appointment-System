@@ -21,10 +21,10 @@ const Homepage = () => {
       if (res?.data?.success) {
         setDoctors(res?.data?.data);
       } else {
-        console.log(res?.data?.message);
+        toast.success(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
   const getUserData = async () => {
@@ -41,7 +41,6 @@ const Homepage = () => {
       }
     } catch (error) {
       toast.error(error);
-      console.log(error);
     }
   };
   useEffect(() => {

@@ -30,7 +30,6 @@ const Profile = () => {
       }
     } catch (error) {
       toast.error(error);
-      console.log(error);
     }
   };
   useEffect(() => {
@@ -49,12 +48,10 @@ const Profile = () => {
         toast.success(res.data.message);
         getData();
       } else {
-        console.log(res.data.message);
         toast.error(res.data.message);
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
       toast.error("Something Went Wrong!!");
     }
   };

@@ -18,12 +18,10 @@ const Register = () => {
         toast.success(res.data.message);
         navigate("/login");
       } else {
-        console.log(res.data.message);
         toast.error(res.data.message);
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
       toast.error("Something Went Wrong!!");
     }
   };

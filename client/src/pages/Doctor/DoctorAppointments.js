@@ -3,13 +3,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 
 const DoctorAppointments = () => {
   const user = useSelector((state) => state.users.user);
   const [appointments, setAppointments] = useState();
-  const navigate = useNavigate();
   const getAppointments = async () => {
     try {
       const res = await axios.post(
@@ -28,7 +26,6 @@ const DoctorAppointments = () => {
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };
@@ -55,7 +52,6 @@ const DoctorAppointments = () => {
         toast.error(res?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };
